@@ -15,19 +15,24 @@ body { font-family:'Roboto', sans-serif; line-height:1.6; background:#f0f2f5; co
 /* Hero Section */
 header {
   height:100vh; display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center;
-  background: linear-gradient(135deg, #3f51b5, #673ab7);
+  background: linear-gradient(135deg, #1e3c72, #2a5298);
   color:#fff; position:relative; overflow:hidden;
 }
-header::after {
-  content:""; position:absolute; top:0; left:0; width:100%; height:100%; background: url('https://www.transparenttextures.com/patterns/cubes.png') repeat; opacity:0.1;
+header canvas#particles {
+  position:absolute; top:0; left:0; width:100%; height:100%; z-index:0;
 }
 header h1 {
-  font-size:2.5em; max-width:900px; opacity:0; transform:translateY(50px); animation:fadeInUp 1s forwards 0.3s;
+  font-size:3em; max-width:900px; z-index:1; color:#fff;
+  opacity:0; transform:translateY(50px); animation:fadeInUp 1s forwards 0.3s;
 }
 header h2 {
-  font-size:1.5em; margin-top:15px; opacity:0; transform:translateY(50px); animation:fadeInUp 1s forwards 0.6s;
+  font-size:1.8em; margin-top:15px; color:#ffffcc; z-index:1;
+  opacity:0; transform:translateY(50px); animation:fadeInUp 1s forwards 0.6s;
+  text-shadow: 0 0 15px rgba(255,255,204,0.7);
 }
-header p.hero-small { font-size:1em; color:#d0d0ff; margin-top:15px; opacity:0; transform:translateY(50px); animation:fadeInUp 1s forwards 0.9s; }
+header p.hero-small { font-size:1em; color:#d0e0ff; margin-top:15px; z-index:1;
+  opacity:0; transform:translateY(50px); animation:fadeInUp 1s forwards 0.9s; text-shadow:0 0 8px rgba(208,224,255,0.8);
+}
 
 /* Sections */
 section { max-width:1000px; margin:80px auto; padding:0 20px; }
@@ -56,8 +61,9 @@ ul li { margin-bottom:8px; }
 <body>
 
 <header>
+  <canvas id="particles"></canvas>
   <h1>優雅架構科技社 · Sovereign Logic Systems (SLS)</h1>
-  <h2>把複雜的事情，變成可檢查、不易出錯的做法。</h2>
+  <h2>把複雜的事情，變成<span style="color:#ffff88;">可檢查、不易出錯</span>的做法。</h2>
   <p>We turn complex problems into systems that are explainable, auditable, and hard to break.</p>
   <p class="hero-small">我們把很難懂的系統和規則講清楚，讓電腦和決定都不會亂來。<br>
   We help people think clearly, so computers and decisions don’t make mistakes.</p>
@@ -138,6 +144,41 @@ ul li { margin-bottom:8px; }
     });
   }, appearOptions);
   faders.forEach(fader => { appearOnScroll.observe(fader); });
+
+  // Particle Effect
+  const canvas = document.getElementById('particles');
+  const ctx = canvas.getContext('2d');
+  let particlesArray;
+  function initParticles(){
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+    particlesArray = [];
+    for(let i=0;i<100;i++){
+      particlesArray.push({
+        x: Math.random()*canvas.width,
+        y: Math.random()*canvas.height,
+        size: Math.random()*2+1,
+        speedX: (Math.random()-0.5)*0.5,
+        speedY: (Math.random()-0.5)*0.5
+      });
+    }
+  }
+  function animateParticles(){
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+    particlesArray.forEach(p=>{
+      ctx.beginPath();
+      ctx.arc(p.x,p.y,p.size,0,Math.PI*2);
+      ctx.fillStyle='rgba(255,255,255,0.7)';
+      ctx.fill();
+      p.x+=p.speedX;
+      p.y+=p.speedY;
+      if(p.x<0||p.x>canvas.width)p.speedX*=-1;
+      if(p.y<0||p.y>canvas.height)p.speedY*=-1;
+    });
+    requestAnimationFrame(animateParticles);
+  }
+  window.addEventListener('resize',()=>{initParticles();});
+  initParticles(); animateParticles();
 </script>
 
 </body>
