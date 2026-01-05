@@ -1,94 +1,237 @@
-```html
 <!DOCTYPE html>
-<html lang="zh-TW">
+<html lang="zh-Hant">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SLS | Sovereign Logic Systems</title>
+    <title>優雅架構科技社 | Sovereign Logic Systems (SLS)</title>
     <style>
-        /* Gaussian Minimalist Style */
-        body {
-            background-color: #fff;
-            color: #000;
-            font-family: "Courier New", Courier, monospace;
-            line-height: 1.2;
-            padding: 5vw;
+        /* CSS Reset & Base Styles */
+        * {
             margin: 0;
-            max-width: 900px;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f4f4f4;
+            scroll-behavior: smooth;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        a {
+            text-decoration: none;
+            color: #0056b3;
+        }
+        ul {
+            list-style: none;
         }
 
-        h1 { font-size: 1.5rem; font-weight: 900; margin-bottom: 2rem; letter-spacing: -1px; }
-        h2 { font-size: 1rem; font-weight: 900; text-transform: uppercase; margin-top: 3rem; border-bottom: 1px solid #000; display: inline-block; }
-        
-        p, li { font-size: 0.9rem; margin: 0.5rem 0; list-style: none; padding: 0; }
-        ul { padding: 0; }
+        /* Color Palette */
+        :root {
+            --primary-color: #003366; /* Deep Blue */
+            --secondary-color: #e9ecef; /* Light Gray */
+            --highlight-color: #007bff; /* Accent Blue */
+            --text-color: #333;
+            --light-text: #fff;
+        }
 
-        .bilingual { margin-bottom: 2rem; }
-        .en { color: #666; display: block; font-size: 0.8rem; text-transform: uppercase; }
-        .zh { display: block; font-weight: bold; }
+        /* Navigation Bar */
+        nav {
+            background: var(--primary-color);
+            color: var(--light-text);
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 10;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        nav .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        nav h1 {
+            font-size: 1.5rem;
+            color: var(--light-text);
+        }
+        nav ul {
+            display: flex;
+        }
+        nav ul li {
+            margin-left: 20px;
+        }
+        nav ul li a {
+            color: var(--light-text);
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+        nav ul li a:hover {
+            color: var(--highlight-color);
+        }
 
-        .principle { font-size: 1.2rem; margin-top: 4rem; border-left: 10px solid #000; padding-left: 1rem; }
-        
-        footer { margin-top: 10rem; font-size: 0.7rem; color: #999; }
+        /* Hero Section */
+        .hero {
+            background: var(--light-text);
+            color: var(--text-color);
+            padding: 10rem 0 5rem 0;
+            text-align: center;
+            border-bottom: 3px solid var(--secondary-color);
+        }
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+        .hero h2 {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            color: var(--text-color);
+        }
+        .hero .tagline-simple {
+            font-style: italic;
+            color: #666;
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+        }
 
-        @media (prefers-color-scheme: dark) {
-            body { background-color: #000; color: #fff; }
-            h2, .principle { border-color: #fff; }
-            .en { color: #888; }
+        /* Sections General */
+        section {
+            padding: 5rem 0;
+            background: var(--light-text);
+        }
+        section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            color: var(--primary-color);
+            border-bottom: 2px solid var(--secondary-color);
+            padding-bottom: 1rem;
+        }
+
+        /* About Section */
+        #about p {
+            font-size: 1.1rem;
+        }
+
+        /* Services Section */
+        .service-item {
+            margin-bottom: 2rem;
+        }
+        .service-item h3 {
+            color: var(--highlight-color);
+            font-size: 1.4rem;
+            margin-bottom: 0.5rem;
+        }
+        .service-item ul li {
+            margin-left: 20px;
+            list-style: disc;
+            color: #666;
+        }
+
+        /* Core Principle Section */
+        #principle {
+            background: var(--secondary-color);
+            text-align: center;
+        }
+        #principle h2 {
+            border-bottom: none;
+            color: var(--primary-color);
+        }
+        #principle p {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--text-color);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--primary-color);
+            color: var(--light-text);
+            text-align: center;
+            padding: 2rem 0;
+            font-size: 0.9rem;
+        }
+        footer a {
+            color: var(--highlight-color);
         }
     </style>
 </head>
 <body>
 
-    <h1>SOVEREIGN LOGIC SYSTEMS (SLS)<br>優雅架構科技社</h1>
+    <nav>
+        <div class="container">
+            <h1>Sovereign Logic Systems</h1>
+            <ul>
+                <li><a href="#about">關於我們</a></li>
+                <li><a href="#services">服務項目</a></li>
+                <li><a href="#principle">核心原則</a></li>
+            </ul>
+        </div>
+    </nav>
 
-    <div class="bilingual">
-        <span class="zh">把複雜的事情，變成不會出錯的做法。</span>
-        <span class="en">Turn complex problems into systems that do not break.</span>
-    </div>
+    <header class="hero">
+        <div class="container">
+            <h1>優雅架構科技社</h1>
+            <h2>Sovereign Logic Systems（SLS）</h2>
+            <p>把複雜的事情，變成不會出錯的做法。</p>
+            <p>We turn complex problems into systems that do not break.</p>
+            <div class="tagline-simple">
+                <p>6 歲能懂的版本：</p>
+                <p>我們幫人把想事情這件事，做得很清楚， 讓電腦和決定不會亂來。</p>
+                <p>We help people think clearly, so computers and decisions don’t make mistakes.</p>
+            </div>
+        </div>
+    </header>
 
-    <h2>Identity / 誰是 SLS</h2>
-    <div class="bilingual">
-        <span class="zh">專注於架構、決策與系統邏輯的技術思想主體。</span>
-        <span class="en">An entity for architecture, decision logic, and systems.</span>
-    </div>
+    <section id="about">
+        <div class="container">
+            <h2>我們是誰 / Who We Are</h2>
+            <p>優雅架構科技社（Sovereign Logic Systems）是一個專注於 架構、決策與系統邏輯的技術與思想組織。</p>
+            <p>SLS is an organization focused on architecture, decision logic, and system-level thinking.</p>
+        </div>
+    </section>
 
-    <h2>Action / 我們在做什麼</h2>
-    <ul>
-        <li>
-            <span class="zh">■ 系統架構設計</span>
-            <span class="en">System Architecture</span>
-        </li>
-        <li>
-            <span class="zh">■ 決策邏輯審計</span>
-            <span class="en">Decision Logic & Audit</span>
-        </li>
-        <li>
-            <span class="zh">■ 自動化治理</span>
-            <span class="en">Automation Governance</span>
-        </li>
-        <li>
-            <span class="zh">■ 方法論與工具</span>
-            <span class="en">Methods & Tools</span>
-        </li>
-    </ul>
+    <section id="services">
+        <div class="container">
+            <h2>我們在做什麼 / What We Do</h2>
+            <div class="service-item">
+                <h3>系統架構設計 / System Architecture</h3>
+                <p><strong>具體事證</strong>：提供企業級資訊系統的藍圖規劃、雲端基礎設施選型（如 AWS, Azure, GCP）、微服務架構設計與現有系統效能評估。</p>
+            </div>
+            <div class="service-item">
+                <h3>決策邏輯與審計 / Decision Logic & Audit</h3>
+                <p><strong>具體事證</strong>：針對複雜商業決策流程進行邏輯梳理，建立自動化審計標準，確保決策過程可解釋、可追蹤。</p>
+            </div>
+            <div class="service-item">
+                <h3>AI 與自動化治理 / AI & Automation Governance</h3>
+                <p><strong>具體事證</strong>：協助導入 AI 系統時建立治理框架，確保演算法的公平性、透明度與責任歸屬，管理自動化風險。</p>
+            </div>
+            <div class="service-item">
+                <h3>方法論、白皮書與工具 / Methods, Papers, Tools</h3>
+                <p><strong>具體事證</strong>：開發並提供標準化的問題解決框架、內部白皮書與開源工具，協助客戶提升內部運營效率。</p>
+            </div>
+        </div>
+    </section>
 
-    <h2>Primitive / 6 歲能懂的邏輯</h2>
-    <div class="bilingual">
-        <span class="zh">想對了，電腦和決定就不會亂來。</span>
-        <span class="en">Think clearly. Decisions won't fail. No mess.</span>
-    </div>
-
-    <div class="principle">
-        <span class="zh">能被相信的系統，必須能被解釋、被檢查、被重來。</span><br>
-        <span class="en">Trust requires: Explainable. Auditable. Repeatable.</span>
-    </div>
+    <section id="principle">
+        <div class="container">
+            <h2>核心原則 / Core Principle</h2>
+            <p>能被相信的系統，必須能被解釋、被檢查、被重來一次。</p>
+            <p>A system worth trusting must be explainable, auditable, and repeatable.</p>
+        </div>
+    </section>
 
     <footer>
-        [ SLS-SYSTEM-2026 ]<br>
-        BUILT ON GITHUB PAGES. INDEPENDENT LOGIC.
+        <div class="container">
+            <p>© 優雅架構科技社 · Sovereign Logic Systems (SLS)</p>
+            <p>Built with <a href="pages.github.com">GitHub Pages</a></p>
+        </div>
     </footer>
 
 </body>
 </html>
-```
