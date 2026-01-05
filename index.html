@@ -1,108 +1,94 @@
+```html
 <!DOCTYPE html>
-<html lang="zh-Hant">
+<html lang="zh-TW">
 <head>
-  <meta charset="UTF-8" />
-  <title>優雅架構科技社 | Sovereign Logic Systems</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="優雅架構科技社 Sovereign Logic Systems：把複雜問題變成清楚、不會出錯的系統。" />
-  <style>
-    body {
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      max-width: 880px;
-      margin: auto;
-      padding: 2.5rem 1.5rem;
-      line-height: 1.7;
-      color: #111;
-    }
-    h1, h2 {
-      line-height: 1.3;
-    }
-    h1 {
-      margin-bottom: 0.2rem;
-    }
-    .subtitle {
-      font-size: 1.1rem;
-      margin-bottom: 2rem;
-      color: #333;
-    }
-    .tagline {
-      font-size: 1.4rem;
-      font-weight: 600;
-      margin: 2rem 0;
-    }
-    .box {
-      border-left: 4px solid #000;
-      padding-left: 1rem;
-      margin: 2.2rem 0;
-    }
-    ul {
-      margin: 0.5rem 0 0.5rem 1.2rem;
-    }
-    footer {
-      margin-top: 4rem;
-      font-size: 0.9rem;
-      color: #555;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SLS | Sovereign Logic Systems</title>
+    <style>
+        /* Gaussian Minimalist Style */
+        body {
+            background-color: #fff;
+            color: #000;
+            font-family: "Courier New", Courier, monospace;
+            line-height: 1.2;
+            padding: 5vw;
+            margin: 0;
+            max-width: 900px;
+        }
+
+        h1 { font-size: 1.5rem; font-weight: 900; margin-bottom: 2rem; letter-spacing: -1px; }
+        h2 { font-size: 1rem; font-weight: 900; text-transform: uppercase; margin-top: 3rem; border-bottom: 1px solid #000; display: inline-block; }
+        
+        p, li { font-size: 0.9rem; margin: 0.5rem 0; list-style: none; padding: 0; }
+        ul { padding: 0; }
+
+        .bilingual { margin-bottom: 2rem; }
+        .en { color: #666; display: block; font-size: 0.8rem; text-transform: uppercase; }
+        .zh { display: block; font-weight: bold; }
+
+        .principle { font-size: 1.2rem; margin-top: 4rem; border-left: 10px solid #000; padding-left: 1rem; }
+        
+        footer { margin-top: 10rem; font-size: 0.7rem; color: #999; }
+
+        @media (prefers-color-scheme: dark) {
+            body { background-color: #000; color: #fff; }
+            h2, .principle { border-color: #fff; }
+            .en { color: #888; }
+        }
+    </style>
 </head>
 <body>
 
-<h1>優雅架構科技社</h1>
-<div class="subtitle">Sovereign Logic Systems（SLS）</div>
+    <h1>SOVEREIGN LOGIC SYSTEMS (SLS)<br>優雅架構科技社</h1>
 
-<div class="tagline">
-把複雜的事情，變成不會出錯的做法。<br/>
-We turn complex problems into systems that do not break.
-</div>
+    <div class="bilingual">
+        <span class="zh">把複雜的事情，變成不會出錯的做法。</span>
+        <span class="en">Turn complex problems into systems that do not break.</span>
+    </div>
 
-<div class="box">
-<h2>我們是誰 / Who We Are</h2>
-<p>
-優雅架構科技社（Sovereign Logic Systems）是一個專注於
-<strong>架構、決策與系統邏輯</strong>的技術與思想組織。
-</p>
-<p>
-SLS is an organization focused on architecture, decision logic,
-and system-level thinking.
-</p>
-</div>
+    <h2>Identity / 誰是 SLS</h2>
+    <div class="bilingual">
+        <span class="zh">專注於架構、決策與系統邏輯的技術思想主體。</span>
+        <span class="en">An entity for architecture, decision logic, and systems.</span>
+    </div>
 
-<div class="box">
-<h2>我們在做什麼 / What We Do</h2>
-<ul>
-  <li>系統架構設計 / System Architecture</li>
-  <li>決策邏輯與審計 / Decision Logic & Audit</li>
-  <li>AI 與自動化治理 / AI & Automation Governance</li>
-  <li>方法論、白皮書與工具 / Methods, Papers, Tools</li>
-</ul>
-</div>
+    <h2>Action / 我們在做什麼</h2>
+    <ul>
+        <li>
+            <span class="zh">■ 系統架構設計</span>
+            <span class="en">System Architecture</span>
+        </li>
+        <li>
+            <span class="zh">■ 決策邏輯審計</span>
+            <span class="en">Decision Logic & Audit</span>
+        </li>
+        <li>
+            <span class="zh">■ 自動化治理</span>
+            <span class="en">Automation Governance</span>
+        </li>
+        <li>
+            <span class="zh">■ 方法論與工具</span>
+            <span class="en">Methods & Tools</span>
+        </li>
+    </ul>
 
-<div class="box">
-<h2>眾人能懂的版本</h2>
-<p>
-我們幫人把想事情這件事，做得很清楚，  
-讓電腦和決定不會亂來。
-</p>
-<p>
-We help people think clearly,  
-so computers and decisions don’t make mistakes.
-</p>
-</div>
+    <h2>Primitive / 6 歲能懂的邏輯</h2>
+    <div class="bilingual">
+        <span class="zh">想對了，電腦和決定就不會亂來。</span>
+        <span class="en">Think clearly. Decisions won't fail. No mess.</span>
+    </div>
 
-<div class="box">
-<h2>核心原則 / Core Principle</h2>
-<p>
-能被相信的系統，必須能被解釋、被檢查、被重來一次。
-</p>
-<p>
-A system worth trusting must be explainable, auditable, and repeatable.
-</p>
-</div>
+    <div class="principle">
+        <span class="zh">能被相信的系統，必須能被解釋、被檢查、被重來。</span><br>
+        <span class="en">Trust requires: Explainable. Auditable. Repeatable.</span>
+    </div>
 
-<footer>
-© 優雅架構科技社 · Sovereign Logic Systems (SLS)<br/>
-Built with GitHub Pages
-</footer>
+    <footer>
+        [ SLS-SYSTEM-2026 ]<br>
+        BUILT ON GITHUB PAGES. INDEPENDENT LOGIC.
+    </footer>
 
 </body>
 </html>
+```
