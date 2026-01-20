@@ -1,129 +1,219 @@
+```html
 <!DOCTYPE html>
 <html lang="zh-TW">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="優雅架構科技社 (SLS) - 決策審計、AI 治理與可驗證系統架構。">
-    <title>優雅架構科技社 | Decision Audit & AI Governance</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="description" content="優雅架構科技社 (SLS) - 專注於決策審計、系統架構與自動化治理。"/>
+    <title>優雅架構科技社 | 決策審計與自動化治理智庫</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Microsoft YaHei', sans-serif; background: #f5f7fa; color: #2c3e50; line-height: 1.6; }
-        .container { max-width: 1000px; margin: 0 auto; background: white; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
-        .tabs { display: flex; border-bottom: 2px solid #e0e0e0; background: #f9f9f9; padding: 0 20px; position: sticky; top: 0; z-index: 100; }
-        .tab-btn { background: none; border: none; padding: 15px 25px; cursor: pointer; font-size: 1em; font-weight: 500; color: #666; transition: all 0.3s ease; border-bottom: 3px solid transparent; margin-bottom: -2px; }
-        .tab-btn.active { color: #4a7c9e; border-bottom-color: #4a7c9e; }
-        .tab-content { display: none; animation: fadeIn 0.3s ease; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Microsoft YaHei', 'Noto Sans TC', sans-serif; background: #f5f7fa; color: #2c3e50; line-height: 1.6;}
+        .container { max-width: 1000px; margin: 24px auto; background: white; box-shadow: 0 2px 8px rgba(0,0,0,0.06); border-radius: 8px; overflow: hidden;}
+        .tabs { display: flex; border-bottom: 1px solid #eceff1; background: #fafafa; padding: 0 10px; position: sticky; top: 12px; z-index: 100; }
+        .tab-btn { background: none; border: none; padding: 12px 18px; cursor: pointer; font-size: 0.98em; font-weight: 600; color: #6b7280; transition: all 0.2s ease; border-bottom: 3px solid transparent; margin-bottom: -3px; }
+        .tab-btn:hover { color: #2c3e50; }
+        .tab-btn.active { color: #184e63; border-bottom-color: #184e63; }
+        .tab-content { display: none; animation: fadeIn 0.24s ease; padding-bottom: 40px;}
         .tab-content.active { display: block; }
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-        header { background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%); color: white; padding: 60px 30px; text-align: center; }
-        h1 { font-size: 2.4em; margin-bottom: 10px; font-weight: 700; }
-        .tagline { font-size: 1.2em; margin-bottom: 10px; font-weight: 300; }
-        section { padding: 40px 30px; border-bottom: 1px solid #e8eef5; }
-        h2 { font-size: 1.8em; color: #4a7c9e; margin-bottom: 20px; }
-        h3 { font-size: 1.3em; margin: 20px 0 10px; }
-        .benefit-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; }
-        .benefit-item { background: #f9fafb; padding: 20px; border-radius: 8px; border-top: 3px solid #5a8fa3; }
-        .story-box { background: #f5f9fc; border-left: 4px solid #5a8fa3; padding: 20px; border-radius: 4px; }
-        .pricing-table { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; }
-        .price-card { background: #fff; border: 1px solid #e0e6ef; border-radius: 8px; padding: 20px; }
-        footer { text-align: center; padding: 40px; color: #888; font-size: 0.9em; background: #f9f9f9; }
+        header { background: linear-gradient(135deg, #0f2b44 0%, #20557a 100%); color: white; padding: 44px 28px; text-align: center; }
+        header .badge { font-size: 0.9em; opacity: 0.95; margin-bottom: 10px; display: block; }
+        h1 { font-size: 2em; margin-bottom: 10px; font-weight: 700; letter-spacing: -0.5px; }
+        .tagline { font-size: 1em; margin-bottom: 8px; font-weight: 400; opacity: 0.95; }
+        header p.lead { font-size: 1.02em; margin-top: 14px; font-weight: 500; opacity: 0.95; }
+        section { padding: 28px; border-bottom: 1px solid #eef3f8; }
+        h2 { font-size: 1.25em; color: #184e63; margin-bottom: 14px; font-weight: 700; }
+        h3 { font-size: 1.05em; color: #20323a; margin: 18px 0 10px; font-weight: 700; }
+        .story-box { background: #f5f9fc; border-left: 4px solid #4a7c9e; padding: 16px; margin: 14px 0; border-radius: 6px; }
+        .benefit-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; margin: 16px 0; }
+        .benefit-item { background: #fff; padding: 16px; border-radius: 8px; border-top: 3px solid #4a7c9e; box-shadow: 0 1px 4px rgba(10,20,30,0.03); }
+        .benefit-item strong { color: #184e63; display: block; margin-bottom: 8px; font-weight: 700; }
+        .gdi-banner { background: #eef6fb; border: 1px dashed #4a7c9e; padding: 14px; border-radius: 8px; display: flex; gap: 12px; align-items: center; justify-content: space-between; flex-wrap: wrap; margin-top: 12px; }
+        .cta-button { background: #24292e; color: white; padding: 10px 18px; border: none; border-radius: 6px; cursor: pointer; font-weight: 700; text-decoration: none; display: inline-block; }
+        .summary-card { background: white; border-left: 3px solid #4a7c9e; padding: 12px; border-radius: 6px; box-shadow: 0 1px 4px rgba(0,0,0,0.03); }
+        .summary-card .value { font-size: 1.1em; font-weight: 800; margin-top: 6px; color: #18394a; }
+        .code-block { background: #0f1720; color: #d1d5db; padding: 12px; border-radius: 6px; font-family: 'Courier New', monospace; overflow-x: auto; margin: 12px 0; font-size: 0.92em; }
+        .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 12px; margin-top: 12px; }
+        .service-card { background: #fff; padding: 14px; border-radius: 8px; border-top: 3px solid #6a11cb; box-shadow: 0 1px 6px rgba(10,20,30,0.03); }
+        .service-card .price { font-weight: 800; color: #1f3f55; margin-top: 8px; }
+        .faq { margin-top: 12px; display: grid; gap: 10px; }
+        .faq-item { background: #fbfdff; padding: 12px; border-radius: 6px; border-left: 3px solid #6a11cb; }
+        footer { text-align: center; padding: 22px; color: #7a8794; font-size: 0.92em; background: #fafafa; border-top: 1px solid #eef3f8; }
+        a.inline { color: #184e63; text-decoration: underline; font-weight: 700; }
+        @media (max-width: 768px) { .container { margin: 12px; } header { padding: 28px 18px; } h1 { font-size: 1.5em; } }
     </style>
 </head>
-
 <body>
-<div class="tabs">
-    <button class="tab-btn active" onclick="switchTab(0)">📱 商業決策版</button>
-    <button class="tab-btn" onclick="switchTab(1)">📊 技術審查報告</button>
-</div>
-
-<div id="tab0" class="tab-content active">
-    <header>
-        <h1>優雅架構科技社</h1>
-        <p class="tagline">Sovereign Logic Systems (SLS)</p>
-        <p>我們不賣人力，而是設計能長期運作的決策與系統規則。</p>
-        <p><strong>We audit AI-driven decisions before they create legal, financial, or reputational damage.</strong></p>
-        <p style="opacity:0.85;">For teams that must sign off on AI, automation, or high-risk system outputs.</p>
-    </header>
-
-    <section>
-        <h2>您真正會需要我們的地方 / When You Actually Need Us</h2>
-        <div class="benefit-list">
-            <div class="benefit-item">
-                <strong>AI 決策審計</strong>
-                <p>在 AI 結果進入董事會、法務或高風險決策前，明確其可用邊界。</p>
-            </div>
-            <div class="benefit-item">
-                <strong>系統失效與責任釐清</strong>
-                <p>當系統「看似正常」，但結果已引發爭議或風險。</p>
-            </div>
-            <div class="benefit-item">
-                <strong>AI 治理與架構設計</strong>
-                <p>在導入 AI 前，先定義責任、可解釋性與審計機制。</p>
-            </div>
-            <div class="benefit-item">
-                <strong>方法論與參考實作</strong>
-                <p>將治理原則轉化為可驗證、可重跑的系統。</p>
-            </div>
+    <div class="container">
+        <div class="tabs" role="tablist" aria-label="SLS tabs">
+            <button class="tab-btn active" onclick="switchTab(0)" role="tab" aria-selected="true">📱 商業決策版</button>
+            <button class="tab-btn" onclick="switchTab(1)" role="tab" aria-selected="false">📊 技術審查報告</button>
         </div>
-    </section>
 
-    <section>
-        <h2>服務與定價 / Engagement & Pricing</h2>
-        <div class="pricing-table">
-            <div class="price-card">
-                <h3>AI Decision Audit</h3>
-                <p>用於 AI 影響法律、財務或管理決策時。</p>
-                <p><strong>Deliverables：</strong><br>
-                可重現的決策追蹤、失效模式分析、管理層摘要</p>
-                <p><strong>Fee：</strong> USD 8,000 – 25,000 / audit</p>
-            </div>
-            <div class="price-card">
-                <h3>System Failure Review</h3>
-                <p>釐清爭議結果背後的技術與責任鏈。</p>
-                <p><strong>Deliverables：</strong><br>
-                不可反駁的 failure chain 與責任邊界</p>
-                <p><strong>Fee：</strong> USD 5,000 – 15,000</p>
-            </div>
-            <div class="price-card">
-                <h3>AI Governance Architecture</h3>
-                <p>在監管或董事會壓力下導入 AI。</p>
-                <p><strong>Deliverables：</strong><br>
-                Audit-by-design 架構與治理模型</p>
-                <p><strong>Fee：</strong> From USD 30,000</p>
-            </div>
+        <div id="tab0" class="tab-content active">
+            <header>
+                <span class="badge">優雅架構科技社 · Sovereign Logic Systems</span>
+                <h1>優雅架構科技社</h1>
+                <div class="tagline">Sovereign Logic Systems (SLS) — Decision audit · System resilience · AI governance</div>
+                <p class="lead">We audit AI-driven decisions before they create legal, financial, or reputational damage.／在 AI 出錯之前，替您把關決策的可用範圍與風險。</p>
+                <p style="margin-top:10px; font-size:0.92em; opacity:0.92;">For teams that must sign off on AI, automation, or high-risk system outputs.／適用於需對 AI 或自動化輸出負責的團隊。</p>
+            </header>
+
+            <section>
+                <h2>您真正會需要我們的地方 / When You Actually Need Us</h2>
+                <div class="benefit-list">
+                    <div class="benefit-item">
+                        <strong>系統架構設計 · Architecture</strong>
+                        <p>適合需重構、遷移或面臨瓶頸的團隊。提供雲端基礎設施規劃與效能評估。／Cloud & infra design, migration and performance review.</p>
+                    </div>
+                    <div class="benefit-item">
+                        <strong>決策邏輯與審計 · Decision Audit</strong>
+                        <p>針對 AI 自動化與關鍵流程，提供可追溯、可重現的審計輸出。／Auditable, reproducible decision trace for high-risk outputs.</p>
+                    </div>
+                    <div class="benefit-item">
+                        <strong>AI 與自動化治理 · Governance</strong>
+                        <p>建立責任邊界與「Audit-by-design」架構，降低合規與聲譽風險。／Define accountability and governance for safe AI use.</p>
+                    </div>
+                    <div class="benefit-item">
+                        <strong>方法論與工具 · Practicals</strong>
+                        <p>將 know-how 固化為制度（如 GDI），把治理原則化為可運行代碼與流程。／Turn governance principles into runnable code & SOPs.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <h2>服務與定價 / Services & Pricing</h2>
+
+                <div class="services-grid">
+                    <div class="service-card">
+                        <strong>AI Decision Audit</strong>
+                        <p style="margin-top:8px;">適用情境：AI 輸出將被採納為法律、財務或高階決策時。／When AI output affects legal, financial or executive decisions.</p>
+                        <ul style="margin:10px 0 0 18px;">
+                            <li>交付物：Decision trace（含來源＋timestamp）</li>
+                            <li>交付物：Failure mode & confidence boundary analysis</li>
+                            <li>交付物：Executive-readable risk summary（PDF）與重現步驟</li>
+                        </ul>
+                        <div class="price">價格：USD 8,000 – 25,000（視系統複雜度與取證範圍而定）</div>
+                    </div>
+
+                    <div class="service-card">
+                        <strong>System Failure & Root Cause Review</strong>
+                        <p style="margin-top:8px;">適用情境：系統表面正常但結果不可解或被質疑時。／When outcomes are disputed or unexplained.</p>
+                        <ul style="margin:10px 0 0 18px;">
+                            <li>交付物：不可反駁的 failure chain</li>
+                            <li>交付物：責任邊界與修復優先表</li>
+                        </ul>
+                        <div class="price">價格：USD 5,000 – 15,000</div>
+                    </div>
+
+                    <div class="service-card">
+                        <strong>AI Governance Architecture</strong>
+                        <p style="margin-top:8px;">適用情境：部署受監管或需董事會批准的 AI 系統。／For regulated or board-level AI deployments.</p>
+                        <ul style="margin:10px 0 0 18px;">
+                            <li>交付物：Audit-by-design 架構與責任矩陣</li>
+                            <li>交付物：合規上路計畫與驗收標準</li>
+                        </ul>
+                        <div class="price">價格：專案制，起價 USD 30,000（視範圍調整）</div>
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <h2>實戰案例：自動化資訊審計 (GDI) 🚀</h2>
+                <div class="story-box">
+                    <p><strong>痛點：</strong> 決策者如何確信 AI 摘要資訊未被遺漏且真實無誤？／How can executives trust AI summaries are complete and verifiable?</p>
+                    <p><strong>解法：Google Daily Insights (GDI)</strong></p>
+                    <ul style="margin: 10px 0 12px 20px;">
+                        <li><strong>自動化：</strong> 每日自動擷取全球趨勢，消滅資訊過載。／Automated global trend extraction.</li>
+                        <li><strong>可審計：</strong> 每一則摘要對應原始來源與時間戳，消滅 AI 幻覺。／Each summary links to sources + timestamps.</li>
+                        <li><strong>開源實踐：</strong> 代碼公開驗證，治理原則可被技術複製。／Open source reference implementation.</li>
+                    </ul>
+                    <div class="gdi-banner">
+                        <div><strong>GitHub: Sovereign-Logic-Systems/Google-Daily-Insights</strong><br/><a class="inline" href="https://github.com/Sovereign-Logic-Systems/Google-Daily-Insights/blob/main/README.md" target="_blank">View Project</a></div>
+                        <div style="font-size:0.92em; opacity:0.92;">This project is a reference implementation for AI information audit and decision traceability.／作為 AI 信息審計與決策可追溯的參考實作。</div>
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <h2>法遵 / 董事會常見問題 / Legal & Board FAQ</h2>
+                <div class="faq">
+                    <div class="faq-item">
+                        <strong>Q1：你們能保證 AI 不會錯嗎？／Can you guarantee AI correctness?</strong>
+                        <p style="margin-top:8px;">A：不能保證正確。Our role is to define and document where AI outputs are safe to use — and where they are not.／我們不保證結果正確，但會明確標註可用範圍與風險邊界。</p>
+                    </div>
+
+                    <div class="faq-item">
+                        <strong>Q2：這跟一般顧問有何不同？／How is this different from consulting?</strong>
+                        <p style="margin-top:8px;">A：顧問給建議；我們交付可驗證、可重現的審計產物，留存證據鏈以供事後檢驗。／Consultants recommend; we deliver auditable artifacts and reproducible steps.</p>
+                    </div>
+
+                    <div class="faq-item">
+                        <strong>Q3：如果出事，可以把責任推給你們嗎？／Can we blame you if something goes wrong?</strong>
+                        <p style="margin-top:8px;">A：我們不承擔決策責任。We make responsibility boundaries explicit before decisions are executed.／我們在決策執行前，幫您把責任矩陣與簽核點寫清楚。</p>
+                    </div>
+
+                    <div class="faq-item">
+                        <strong>Q4：你們的結論如何證明不是主觀？／How do we know your findings aren't subjective?</strong>
+                        <p style="margin-top:8px;">A：所有結論可回溯到來源輸入、timestamp 與重現流程；若結果不可重現，則不交付。／All conclusions are traceable to source inputs and reproducible steps.</p>
+                    </div>
+                </div>
+            </section>
+
+            <footer>
+                <strong>優雅架構科技社 · Sovereign Logic Systems</strong><br/>
+                © 2026 Sovereign Logic Systems | 實務連結：GDI 開源項目
+            </footer>
         </div>
-    </section>
 
-    <section>
-        <h2>責任聲明 / Responsibility Boundary</h2>
-        <div class="story-box">
-            <p><strong>我們不保證 AI 不會出錯。</strong></p>
-            <p>We do not guarantee correctness.</p>
-            <p>我們的工作是：<br>
-            <em>定義 AI 何時可用、何時不可用，並使責任邊界在決策前即被說清楚。</em></p>
-        </div>
-    </section>
+        <div id="tab1" class="tab-content">
+            <div style="background:#f6fbff; padding:20px 24px; border-bottom:1px solid #eef3f8;">
+                <h1 style="margin-bottom:8px;">🎯 系統治理與架構審計 · Architecture & Audit</h1>
+                <div style="display:flex; gap:12px; flex-wrap:wrap;">
+                    <div class="summary-card"><strong>Logic Grade</strong><div class="value">8.5 / 10</div></div>
+                    <div class="summary-card"><strong>WCL Risk</strong><div class="value">0.18</div></div>
+                    <div class="summary-card"><strong>Status</strong><div class="value">ACTIONABLE</div></div>
+                </div>
+                <p style="margin-top:8px; color:#6b7280; font-size:0.92em;">* 以上為內部架構自我審查指標 (Internal Audit Score)，用於版本間比較與風險自控。／Internal metrics for comparing versions and controlling risk.</p>
+            </div>
 
-    <footer>
-        <strong>Sovereign Logic Systems</strong><br>
-        © 2026 | AI Decision Audit & Governance
-    </footer>
-</div>
-
-<div id="tab1" class="tab-content">
-    <section>
-        <h2>Technical Audit View</h2>
-        <p>This section intentionally remains engineering-facing.</p>
-    </section>
-</div>
-
-<script>
-function switchTab(index) {
-    document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
-    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-    document.getElementById('tab' + index).classList.add('active');
-    document.querySelectorAll('.tab-btn')[index].classList.add('active');
+            <section>
+                <h2>🔍 Logic Audit — 實務驗證 (GDI)</h2>
+                <div class="code-block">
+{
+  "project": "Google-Daily-Insights",
+  "audit_target": "Information Extraction Pipeline",
+  "axioms": ["Log", "Quant", "Falsifiable", "Timestamp"],
+  "validation": "Successful: Audit logs match raw API responses."
 }
-</script>
+                </div>
+                <p>此驗證證明：能把治理原則轉為可運行代碼與可審計流程。／Demonstrates governance principles implemented as runnable, auditable code.</p>
+            </section>
+
+            <section>
+                <h2>📊 戰略佈局 (20/80 Rule)</h2>
+                <ul style="margin-left:18px;">
+                    <li><strong>20% Stability：</strong> 傳統架構與合規審計，確保系統穩定與可追溯。／Stability & compliance baseline.</li>
+                    <li><strong>80% Velocity：</strong> 以 AI 與自動化提升資訊與決策速度，同時保留審計鏈。／Velocity via AI, preserving auditability.</li>
+                </ul>
+            </section>
+
+            <footer>
+                <strong>SLS Architecture Audit Report</strong><br/>
+                Framework: (Logic && Quant && Falsifiable && Timestamp) — Singularity defines the Law. Logic syncs the Reality.
+            </footer>
+        </div>
+    </div>
+
+    <script>
+        function switchTab(index){
+            const tabs = document.querySelectorAll('.tab-content');
+            const btns = document.querySelectorAll('.tab-btn');
+            tabs.forEach((t,i)=>{ t.classList.toggle('active', i===index); });
+            btns.forEach((b,i)=>{ b.classList.toggle('active', i===index); });
+        }
+    </script>
 </body>
 </html>
+```
